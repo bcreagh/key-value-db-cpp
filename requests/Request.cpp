@@ -3,14 +3,6 @@
 #include "Request.hpp"
 
 
-std::string Request::getInput() {
-	return Request::input;
-}
-
-void Request::setInput(std::string input) {
-	Request::input = input;
-}
-
 std::string Request::getKey() {
 	return Request::key;
 }
@@ -27,14 +19,30 @@ void Request::setValue(std::string value) {
 	Request::value = value;
 }
 
-std::string Request::getType() {
+RequestType Request::getType() {
 	return Request::type;
 }
 
-void Request::setType(std::string type) {
+void Request::setType(RequestType type) {
 	Request::type = type;
 }
 
 std::string Request::toString() {
-	return "{ input: " + Request::input + ", key: " + Request::key + ", value: " + value + ", type: " + type + " }";
+	return "{ key: " + Request::key + ", value: " + value + ", type: " + Request::typeAsString() + " }";
+}
+
+std::string Request::typeAsString() {
+	switch (Request::type)
+	{
+	case RequestType::READ:
+		return "READ";
+	case RequestType::INSERT:
+		return "INSERT";
+	case RequestType::UPDATE:
+		return "UPDATE";
+	case RequestType::DELETE:
+		return "DELETE";
+	default:
+		return "";
+	}
 }

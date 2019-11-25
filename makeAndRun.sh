@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-make
+set -e
 
-if [ "${?}" == "0" ] ; then
-	echo -e	"\n\n--------------------------\n\n"
-	./build/bridb
-fi
+cd build
+cmake -G "Unix Makefiles" ..
+make
+./bridb

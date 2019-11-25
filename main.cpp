@@ -18,7 +18,7 @@ int main() {
 
 		request = requestFactory.createRequest(input);
 
-		std::cout << "Hello, " << request.toString() << std::endl;
+		std::cout << request.toString() << std::endl;
 	}
 	return 0;
 }
